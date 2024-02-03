@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'This is for Building App'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'This is for Testing App'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'This is for Deploying App'
+            }
+        }
+    }
+
+    post {
+        always {
+            emailext body: 'Tested', subject: 'Jenkins', to: 'sanjaygouda136@gmail.com'
+        }
+    }
+}
